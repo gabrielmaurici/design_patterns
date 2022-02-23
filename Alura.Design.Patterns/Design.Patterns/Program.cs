@@ -6,15 +6,22 @@ namespace Design.Patterns
     {
         static void Main(string[] args)
         {
-            IImposto icms = new ICMS();
-            IImposto iss = new ISS();
+            // Strategy
+            // Interface que contém um método genérico e pode ser herdado para classes que queiram implementar sua regra de negócio ao mesmo método
 
-            Orcamento orcamento = new Orcamento(500.0);
+            // Chain of Responsibility
+            // Uma interface parecida com o pattern strategy, porém, é possível fazer com que uma corrente de regra de negócio seja executada caso a regra do momento não caiba ao processo.
 
-            CalculadorDeImpostos calculador = new CalculadorDeImpostos();
+            CalculadorDeDescontos calculador = new CalculadorDeDescontos();
 
-            calculador.RealizaImposto(orcamento, icms);
-            calculador.RealizaImposto(orcamento, iss);
+            Orcamento orcamento = new Orcamento(500);
+            orcamento.AdicionaItem(new Item("Garfo", 80.0));
+            orcamento.AdicionaItem(new Item("Faca", 60.0));
+            orcamento.AdicionaItem(new Item("Faca", 60.0));
+            orcamento.AdicionaItem(new Item("Faca", 60.0));
+            orcamento.AdicionaItem(new Item("Faca", 60.0));
+
+            Console.WriteLine(calculador.Calcula(orcamento));
 
             Console.ReadKey();
         }
