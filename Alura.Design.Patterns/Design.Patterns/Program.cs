@@ -12,6 +12,9 @@ namespace Design.Patterns
             // Chain of Responsibility
             // Uma interface parecida com o pattern strategy, porém, é possível fazer com que uma corrente de regra de negócio seja executada caso a regra do momento não caiba ao processo.
 
+            // Template Method
+            // Consiste em uma classe abstrata onde se encontra um método seguindo um algoritimo padrão e outros métodos abstratos que podem ser implementados de acordo com a regra de negócio da classe que a implemente
+
             CalculadorDeDescontos calculador = new CalculadorDeDescontos();
 
             Orcamento orcamento = new Orcamento(500);
