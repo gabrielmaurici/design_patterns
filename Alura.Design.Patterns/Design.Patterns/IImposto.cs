@@ -1,7 +1,27 @@
 ﻿namespace Design.Patterns
 {
-    public interface IImposto
+    public abstract class IImposto
     {
-        double Calcula(Orcamento orcamento);
+        public IImposto(IImposto outroImposto)
+        {
+            OutroImposto = outroImposto;
+        }
+
+        public IImposto()
+        {
+            OutroImposto = null;
+        }
+
+        public IImposto OutroImposto { get; set; }
+
+        public abstract double Calcula(Orcamento orcamento);
+
+        protected double CalculoDoOutroImposto(Orcamento orcamento)
+        {
+            if (OutroImposto == null)
+                return 0;
+
+            return OutroImposto.Calcula(orcamento);
+        }
     }
 }

@@ -15,7 +15,10 @@ namespace Design.Patterns
             // Template Method
             // Consiste em uma classe abstrata onde se encontra um método seguindo um algoritimo padrão e outros métodos abstratos que podem ser implementados de acordo com a regra de negócio da classe que a implemente
 
-            CalculadorDeDescontos calculador = new CalculadorDeDescontos();
+            // Decorator
+            // É uma forma de fazer com que uma ou mais regras sejam executadas de uma só vez, passando pelo construtor outras classes que contém as suas próprias responsabilidades
+
+            IImposto ikcv = new IKCV(new ICPP());
 
             Orcamento orcamento = new Orcamento(500);
             orcamento.AdicionaItem(new Item("Garfo", 80.0));
@@ -24,7 +27,7 @@ namespace Design.Patterns
             orcamento.AdicionaItem(new Item("Faca", 60.0));
             orcamento.AdicionaItem(new Item("Faca", 60.0));
 
-            Console.WriteLine(calculador.Calcula(orcamento));
+            Console.WriteLine(ikcv.Calcula(orcamento));
 
             Console.ReadKey();
         }
