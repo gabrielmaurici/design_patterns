@@ -16,18 +16,23 @@ namespace Design.Patterns
             // Consiste em uma classe abstrata onde se encontra um método seguindo um algoritimo padrão e outros métodos abstratos que podem ser implementados de acordo com a regra de negócio da classe que a implemente
 
             // Decorator
-            // É uma forma de fazer com que uma ou mais regras sejam executadas de uma só vez, passando pelo construtor outras classes que contém as suas próprias responsabilidades
+            // É uma forma de fazer com que uma ou mais regras sejam executadas de uma só vez, passando pelo construtor outras classes que contém as suas próprias responsabilidades 
 
-            IImposto ikcv = new IKCV(new ICPP());
+            // State
+            // Baseado em um objeto que varia de estados onde cada um possui sua regra de negócio. Possui uma propriedade para controlar seus estados, essa propriedade é uma interface que pode ser herdada por classes que fazem parte do estado do objeto principal, e cada uma dessas classes implementam suas próprias regras.
 
-            Orcamento orcamento = new Orcamento(500);
-            orcamento.AdicionaItem(new Item("Garfo", 80.0));
-            orcamento.AdicionaItem(new Item("Faca", 60.0));
-            orcamento.AdicionaItem(new Item("Faca", 60.0));
-            orcamento.AdicionaItem(new Item("Faca", 60.0));
-            orcamento.AdicionaItem(new Item("Faca", 60.0));
+            Orcamento reforma = new Orcamento(500);
 
-            Console.WriteLine(ikcv.Calcula(orcamento));
+            reforma.AplicaDescontoExtra();
+            Console.WriteLine(reforma.Valor);
+
+            reforma.Aprova();
+            reforma.AplicaDescontoExtra();
+            Console.WriteLine(reforma.Valor);
+
+            reforma.Finaliza();
+            reforma.AplicaDescontoExtra();
+            Console.WriteLine(reforma.Valor);
 
             Console.ReadKey();
         }
