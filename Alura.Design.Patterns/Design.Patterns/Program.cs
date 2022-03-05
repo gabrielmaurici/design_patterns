@@ -21,18 +21,21 @@ namespace Design.Patterns
             // State
             // Baseado em um objeto que varia de estados onde cada um possui sua regra de negócio. Possui uma propriedade para controlar seus estados, essa propriedade é uma interface que pode ser herdada por classes que fazem parte do estado do objeto principal, e cada uma dessas classes implementam suas próprias regras.
 
-            Orcamento reforma = new Orcamento(500);
+            // Builder
+            // É usado para ajudar na criação de um objeto muito grande. Cria-se uma classe builder onde a mesma tem métodos de construção para cada propriedade e um método que retorna o objeto principal por inteiro.
 
-            reforma.AplicaDescontoExtra();
-            Console.WriteLine(reforma.Valor);
+            NotaFiscalBuilder criador = new ();
 
-            reforma.Aprova();
-            reforma.AplicaDescontoExtra();
-            Console.WriteLine(reforma.Valor);
+            criador.ParaEmpresa("Apple")
+                .ComCnpj("23.456.789/0001-12")
+                .comItem(new ItemDaNota("Iphone", 8500.0))
+                .comItem(new ItemDaNota("Apple Watch", 2400.0))
+                .NaDataAtual()
+                .ComObservacoes("Qualquer");
 
-            reforma.Finaliza();
-            reforma.AplicaDescontoExtra();
-            Console.WriteLine(reforma.Valor);
+            NotaFiscal nf = criador.Constroi();
+
+            Console.WriteLine(nf);
 
             Console.ReadKey();
         }
