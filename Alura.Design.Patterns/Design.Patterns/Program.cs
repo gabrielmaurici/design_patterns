@@ -24,6 +24,9 @@ namespace Design.Patterns
             // Builder
             // É usado para ajudar na criação de um objeto muito grande. Cria-se uma classe builder onde a mesma tem métodos de construção para cada propriedade e um método que retorna o objeto principal por inteiro.
 
+            // Observer
+            // Observer é uma forma de inscrever funções/eventos para serem executados quando algo acontecer. É usado uma interface com um método void onde as classes responsáveis pela regra da função/evento implementam suas regras, assim a o objeto principal pode ter uma lista de ações que são inscritas para serem executadas.
+
             NotaFiscalBuilder criador = new ();
 
             criador.ParaEmpresa("Apple")
@@ -32,6 +35,10 @@ namespace Design.Patterns
                 .comItem(new ItemDaNota("Apple Watch", 2400.0))
                 .NaDataAtual()
                 .ComObservacoes("Qualquer");
+
+            criador.AdicionaAcao(new EnviadorDeEmail());
+            criador.AdicionaAcao(new EnviadorDeSms());
+            criador.AdicionaAcao(new NotaFiscalDao());
 
             NotaFiscal nf = criador.Constroi();
 
