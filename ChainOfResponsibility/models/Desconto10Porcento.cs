@@ -1,24 +1,9 @@
 namespace ChainOfResponsibility.models
 {
-    public class Desconto10Porcento : IDesconto
+    public class Desconto10Porcento : AbstractDesconto
     {
-        public IDesconto Proximo { get ; set ; } = null!;
-
-        public decimal Calcula(decimal valorCompra)
+        public Desconto10Porcento() : base (valorMinimo: 100, valorMaximo: 200, porcentagemRegra: 0.1m)
         {
-            if(valorCompra >= 100 && valorCompra <= 200)
-                return valorCompra - valorCompra * 0.1m;
-
-            if(Proximo == null)
-                return valorCompra;
-
-            return Proximo.Calcula(valorCompra);
-        }
-
-        public IDesconto SetaProximo(IDesconto desconto)
-        {
-            Proximo = desconto;
-            return desconto;
         }
     }
 }
