@@ -12,7 +12,7 @@ class Program
         desconto10Porcento.SetaProximo(desconto20Porcento)
                           .SetaProximo(desconto30Porcento);
 
-        var valorDesconto = desconto10Porcento.Calcula(250);
+        var valorDesconto = desconto10Porcento.Calcula(700);
 
         Console.WriteLine(valorDesconto);
     } 
