@@ -34,8 +34,9 @@
                 return this;
             }
 
-            ValorTotal = valorCalculado;
+            ValorTotal = ArredondaValorMonetario(valorCalculado);
             Mensagem = $"Pagamento crédito no valor de: R${ValorTotal} aprovado com sucesso";
+            LimiteUtilizado = ArredondaValorMonetario(limiteFuturo);
 
             return this;
         }
@@ -65,9 +66,9 @@
             return valorPagamento;
         }
 
-        private void AtualizaLimiteAtualizado(decimal limiteFuturo)
+        private decimal ArredondaValorMonetario(decimal valor)
         {
-            LimiteUtilizado = limiteFuturo;
+            return decimal.Round(valor, 2);
         }
     }
 }

@@ -28,8 +28,8 @@
 
         private void AplicaDesconto(decimal valorPagamento)
         {
-            ValorTotal = valorPagamento - valorPagamento * 0.10m;
-            Saldo -= ValorTotal;
+            ValorTotal = ArredondaValorMonetario(valorPagamento - valorPagamento * 0.10m);
+            Saldo -= ArredondaValorMonetario(ValorTotal);
             Mensagem = $"Pagamento PIX no valor de: R${ValorTotal} efetuado com sucesso";
         }
 
@@ -42,6 +42,11 @@
             }
 
             return true;
+        }
+
+        private decimal ArredondaValorMonetario(decimal valor)
+        {
+            return decimal.Round(valor, 2);
         }
     }
 }
